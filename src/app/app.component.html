@@ -1,0 +1,33 @@
+
+<form [formGroup] = 'messageForm' (ngSubmit)="onSubmit()">
+  <h1 *ngIf="success">Form is valid</h1>
+  <label>
+    Immatriculation:
+    <input type="text" formControlName='immat'>
+    <div *ngIf='submitted && messageForm.controls.immat.errors' class="error">
+      <div *ngIf='messageForm.controls.immat.errors.required'>Votre numéro d'Immatriculation est nécessaire</div>
+    </div>
+
+  </label>
+
+  <label>
+      Message:
+      <input type="text" formControlName='message'>
+      <div *ngIf='submitted && messageForm.controls.message.errors' class="error">
+        <div *ngIf='messageForm.controls.message.errors.required'>Mettre un message</div>
+      </div>
+  
+    </label>
+  <input type="submit" value = 'Submit your data' class="cta">
+
+  
+
+</form>
+<div *ngIf='submitted' class="results">
+  Name: {{messageForm.controls.immat.value}}
+</div>
+<app-nav></app-nav>
+
+<section>
+  <router-outlet></router-outlet>
+</section>
